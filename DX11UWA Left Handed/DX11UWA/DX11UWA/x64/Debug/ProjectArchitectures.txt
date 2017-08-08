@@ -1,0 +1,1 @@
+C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\DX11UWA.vcxproj;x64
