@@ -146,6 +146,7 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 			if (spotLightSwitch)
 			{
 				spotPos.z += .1f;
+				XMStoreFloat4(&light.coneAngle, XMVectorSet(coneAng.x, coneAng.y, coneAng.z + 1.0f, 0.0f));
 				if (spotPos.z >= 2)
 				{
 					spotLightSwitch = false;
@@ -154,6 +155,7 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 			else
 			{
 				spotPos.z -= .1f;
+				XMStoreFloat4(&light.coneAngle, XMVectorSet(coneAng.x, coneAng.y, coneAng.z - 1.0f, 0.0f));
 				if (spotPos.z <= -2)
 				{
 					spotLightSwitch = true;
@@ -165,10 +167,9 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 		light.radius.x = spotRad;
 		light.ConeRatio.x = innerConeRat;
 		light.ConeRatio.y = outterConeRat;
-		light.coneAngle = coneAng;
-
+		
 		light.Position = LightPosition;
-		XMVECTOR LightDirection = XMVectorSet(-LightPosition.x, -LightPosition.y, -LightPosition.z*4, 0.0f);
+		XMVECTOR LightDirection = XMVectorSet(-LightPosition.x, -LightPosition.y, -LightPosition.z, 0.0f);
 		LightDirection = XMVector3Normalize(LightDirection);
 		XMStoreFloat4(&light.Direction, LightDirection);
 

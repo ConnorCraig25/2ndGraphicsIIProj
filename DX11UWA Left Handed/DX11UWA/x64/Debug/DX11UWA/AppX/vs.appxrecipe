@@ -33,7 +33,7 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\DX11UWA.exe">
       <PackagePath>DX11UWA.exe</PackagePath>
-      <Modified>2017-08-08T21:17:32.913</Modified>
+      <Modified>2017-08-08T21:51:44.522</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\DX11UWA.winmd">
       <PackagePath>DX11UWA.winmd</PackagePath>
@@ -91,7 +91,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\LightPixelShader.cso">
       <PackagePath>LightPixelShader.cso</PackagePath>
-      <Modified>2017-08-08T20:21:38.053</Modified>
+      <Modified>2017-08-08T21:37:22.004</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\PyramidPixelShader.cso">
       <PackagePath>PyramidPixelShader.cso</PackagePath>
