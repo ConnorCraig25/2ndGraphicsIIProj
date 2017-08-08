@@ -127,6 +127,9 @@
     <FxCompile Include="Content\PyramidPixelShader.hlsl">
       <Filter>Content\Shaders</Filter>
     </FxCompile>
+    <FxCompile Include="Content\InstancedVertexShader.hlsl">
+      <Filter>Content\Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <Object Include="Assets\floor_bottom.obj">

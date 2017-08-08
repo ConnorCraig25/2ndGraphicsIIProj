@@ -41,6 +41,7 @@ namespace DX11UWA
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_vertexBuffer;
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_indexBuffer;
 		Microsoft::WRL::ComPtr<ID3D11VertexShader>	m_vertexShader;
+		Microsoft::WRL::ComPtr<ID3D11VertexShader>	instancedvertexShader;
 		Microsoft::WRL::ComPtr<ID3D11PixelShader>   m_light_pixelShader;
 		Microsoft::WRL::ComPtr<ID3D11PixelShader>	m_pyramid_pixelShader;
 		Microsoft::WRL::ComPtr<ID3D11PixelShader>	m_pixelShader;
@@ -65,7 +66,7 @@ namespace DX11UWA
 		// System resources for pyramid geometry.
 		uint32	m_indexPyramidCount;
 		uint32 m_numPyramids;
-		ModelViewProjectionConstantBuffer	m_constBufferPyramidData[3];
+		ModelViewProjectionConstantBufferInstanced 	m_constBufferPyramidData;
 
 		//lighting
 		struct Light

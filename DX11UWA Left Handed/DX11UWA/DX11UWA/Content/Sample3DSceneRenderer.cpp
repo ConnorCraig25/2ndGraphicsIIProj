@@ -181,13 +181,13 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 
 	for (unsigned int i = 0; i < 3; i++)
 	{
-		m_constBufferPyramidData[i].model = m_constantBufferData.model;
-		m_constBufferPyramidData[i].projection = m_constantBufferData.projection;
-		m_constBufferPyramidData[i].view = m_constantBufferData.view;
-		XMStoreFloat4x4(&m_constBufferPyramidData[i].model,
+		m_constBufferPyramidData.model[i] = m_constantBufferData.model;
+		m_constBufferPyramidData.projection = m_constantBufferData.projection;
+		m_constBufferPyramidData.view = m_constantBufferData.view;
+		XMStoreFloat4x4(&m_constBufferPyramidData.model[i],
 			XMMatrixTranspose(XMMatrixTranslation(m_LightProperties.Lights[i].Position.x,
-				m_LightProperties.Lights[i].Position.y,
-				m_LightProperties.Lights[i].Position.z)));
+												  m_LightProperties.Lights[i].Position.y,
+												  m_LightProperties.Lights[i].Position.z)));
 	}
 
 }
@@ -367,19 +367,18 @@ void Sample3DSceneRenderer::Render(void)
 	// Draw the objects.
 	context->DrawIndexed(m_indexfloor_bottomCount, 0, 0);
 
-	for (unsigned int i = 0; i < 3; i++)
-	{
-		context->UpdateSubresource1(m_constantBuffer.Get(), 0, NULL, &m_constBufferPyramidData[i], 0, 0, 0);
+
+		context->UpdateSubresource1(m_constPyramidBuffer.Get(), 0, NULL, &m_constBufferPyramidData, 0, 0, 0);
 		context->IASetVertexBuffers(0, 1, m_VertPyramidBuffer.GetAddressOf(), &stride, &offset);
 		context->IASetIndexBuffer(m_IndexPyramidBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
 		context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		context->IASetInputLayout(m_inputLayout.Get());
-		context->VSSetShader(m_vertexShader.Get(), nullptr, 0);
-		context->VSSetConstantBuffers1(0, 1, m_constantBuffer.GetAddressOf(), nullptr, nullptr);
+		context->VSSetShader(instancedvertexShader.Get(), nullptr, 0);
+		context->VSSetConstantBuffers1(0, 1, m_constPyramidBuffer.GetAddressOf(), nullptr, nullptr);
 		context->PSSetShader(m_pyramid_pixelShader.Get(), nullptr, 0);
 		// Draw the objects.
-		context->DrawIndexed(m_indexPyramidCount, 0, 0);
-	}
+		context->DrawIndexedInstanced(m_indexPyramidCount, 3, 0, 0, 0);
+
 
 }
 
@@ -387,6 +386,7 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 {
 	// Load shaders asynchronously.
 	auto loadVSTask = DX::ReadDataAsync(L"SampleVertexShader.cso");
+	auto loadInstanceVStask = DX::ReadDataAsync(L"InstancedVertexShader.cso");
 	auto loadPSTask = DX::ReadDataAsync(L"SamplePixelShader.cso");
 	auto loadLightPSTask = DX::ReadDataAsync(L"LightPixelShader.cso");
 	auto loadPyramidPSTask = DX::ReadDataAsync(L"PyramidPixelShader.cso");
@@ -405,7 +405,11 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 
 		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateInputLayout(vertexDesc, ARRAYSIZE(vertexDesc), &fileData[0], fileData.size(), &m_inputLayout));
 	});
+	auto createInstanceVSTask = loadInstanceVStask.then([this](const std::vector<byte>& fileData)
+	{
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateVertexShader(&fileData[0], fileData.size(), nullptr, &instancedvertexShader));
 
+	});
 	// After the pixel shader file is loaded, create the shader and constant buffer.
 	auto createPSTask = loadPSTask.then([this](const std::vector<byte>& fileData)
 	{
@@ -419,6 +423,8 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreatePixelShader(&fileData[0], fileData.size(), nullptr, &m_pyramid_pixelShader));
 		CD3D11_BUFFER_DESC constantBufferDesc(sizeof(LightProperties), D3D11_BIND_CONSTANT_BUFFER);
 		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&constantBufferDesc, nullptr, &m_constantBuffer));
+		CD3D11_BUFFER_DESC instancedconstantBufferDesc(sizeof(ModelViewProjectionConstantBufferInstanced), D3D11_BIND_CONSTANT_BUFFER);
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&instancedconstantBufferDesc, nullptr, &m_constPyramidBuffer));
 	});
 	auto createlightPSTask = loadLightPSTask.then([this](const std::vector<byte>& fileData)
 	{
@@ -512,7 +518,7 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 			m_floor_bottomTex.GetAddressOf());
 	});
 
-	auto createPyramidsTask = (createPSTask && createVSTask  && createPyramidPSTask).then([this]()
+	auto createPyramidsTask = (createInstanceVSTask && createPyramidPSTask).then([this]()
 	{
 		Mesh pyramid = Mesh("Assets/pyramid.obj");
 

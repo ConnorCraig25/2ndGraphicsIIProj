@@ -27,13 +27,13 @@
     <AppXManifest Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-08-08T20:12:04.918</Modified>
+      <Modified>2017-08-08T21:06:04.990</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\DX11UWA.exe">
       <PackagePath>DX11UWA.exe</PackagePath>
-      <Modified>2017-08-08T20:32:28.670</Modified>
+      <Modified>2017-08-08T21:17:32.913</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\DX11UWA.winmd">
       <PackagePath>DX11UWA.winmd</PackagePath>
@@ -85,6 +85,10 @@
       <PackagePath>Assets\pyramid.obj</PackagePath>
       <Modified>2017-07-25T22:01:06.248</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\InstancedVertexShader.cso">
+      <PackagePath>InstancedVertexShader.cso</PackagePath>
+      <Modified>2017-08-08T21:01:09.135</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\LightPixelShader.cso">
       <PackagePath>LightPixelShader.cso</PackagePath>
       <Modified>2017-08-08T20:21:38.053</Modified>
@@ -107,7 +111,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2017-08-08T20:12:04.788</Modified>
+      <Modified>2017-08-08T21:06:04.851</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
