@@ -1,4 +1,6 @@
-﻿  Sample3DSceneRenderer.cpp
+﻿  App.cpp
+  Sample3DSceneRenderer.cpp
+  DX11UWAMain.cpp
 c:\users\chamjam\documents\github\2ndgraphicsiiproj\dx11uwa left handed\dx11uwa\dx11uwa\content\sample3dscenerenderer.cpp(91): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\chamjam\documents\github\2ndgraphicsiiproj\dx11uwa left handed\dx11uwa\dx11uwa\content\sample3dscenerenderer.cpp(503): warning C4267: 'argument': conversion from 'size_t' to 'UINT', possible loss of data
 c:\users\chamjam\documents\github\2ndgraphicsiiproj\dx11uwa left handed\dx11uwa\dx11uwa\content\sample3dscenerenderer.cpp(506): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data

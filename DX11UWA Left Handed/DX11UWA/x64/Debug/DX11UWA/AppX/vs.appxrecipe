@@ -33,7 +33,7 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\DX11UWA.exe">
       <PackagePath>DX11UWA.exe</PackagePath>
-      <Modified>2017-08-08T21:51:44.522</Modified>
+      <Modified>2017-08-08T21:55:12.811</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\DX11UWA.winmd">
       <PackagePath>DX11UWA.winmd</PackagePath>

@@ -119,7 +119,7 @@ namespace DX11UWA
 		float spotRad = 10.0f;
 		float innerConeRat = .8f;
 		float outterConeRat = .45f;
-		XMFLOAT4 coneAng = { 0,-1.0f, -1.0f, 0 };
+		XMFLOAT4 coneAng = { 0,-1.0f, 0.0f, 0 };
 
 		XMFLOAT4 pointLightPos = { 5.0f,1.0f, 5.0f,1 };
 		XMFLOAT4 directionalLightPos = { -7.0f, 5.0f, 0.0f,1 };
