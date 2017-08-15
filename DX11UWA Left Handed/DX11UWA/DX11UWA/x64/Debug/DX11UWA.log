@@ -1,12 +1,10 @@
-﻿  App.cpp
-  Sample3DSceneRenderer.cpp
-  DX11UWAMain.cpp
-c:\users\chamjam\documents\github\2ndgraphicsiiproj\dx11uwa left handed\dx11uwa\dx11uwa\content\sample3dscenerenderer.cpp(91): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\chamjam\documents\github\2ndgraphicsiiproj\dx11uwa left handed\dx11uwa\dx11uwa\content\sample3dscenerenderer.cpp(503): warning C4267: 'argument': conversion from 'size_t' to 'UINT', possible loss of data
-c:\users\chamjam\documents\github\2ndgraphicsiiproj\dx11uwa left handed\dx11uwa\dx11uwa\content\sample3dscenerenderer.cpp(506): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
-c:\users\chamjam\documents\github\2ndgraphicsiiproj\dx11uwa left handed\dx11uwa\dx11uwa\content\sample3dscenerenderer.cpp(512): warning C4267: 'argument': conversion from 'size_t' to 'UINT', possible loss of data
-c:\users\chamjam\documents\github\2ndgraphicsiiproj\dx11uwa left handed\dx11uwa\dx11uwa\content\sample3dscenerenderer.cpp(530): warning C4267: 'argument': conversion from 'size_t' to 'UINT', possible loss of data
-c:\users\chamjam\documents\github\2ndgraphicsiiproj\dx11uwa left handed\dx11uwa\dx11uwa\content\sample3dscenerenderer.cpp(533): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
-c:\users\chamjam\documents\github\2ndgraphicsiiproj\dx11uwa left handed\dx11uwa\dx11uwa\content\sample3dscenerenderer.cpp(539): warning C4267: 'argument': conversion from 'size_t' to 'UINT', possible loss of data
+﻿C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Content\LightPixelShader.hlsl(64,9-45): warning X3206: implicit truncation of vector type
+C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Content\LightPixelShader.hlsl(89,24-60): warning X3206: 'Sample': implicit truncation of vector type
+  
+  compilation object save succeeded; see C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\LightPixelShader.cso
+  compilation object save succeeded; see C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\PyramidPixelShader.cso
+C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Content\SamplePixelShader.hlsl(20,15-53): warning X3206: 'Sample': implicit truncation of vector type
+  
+  compilation object save succeeded; see C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\SamplePixelShader.cso
   DX11UWA.vcxproj -> C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\DX11UWA.exe
   DX11UWA.vcxproj -> C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\DX11UWA.pdb (Partial PDB)

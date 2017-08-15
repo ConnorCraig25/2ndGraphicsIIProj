@@ -328,12 +328,14 @@ void Sample3DSceneRenderer::Render(void)
 
 	XMStoreFloat4x4(&m_constantBufferData.view, XMMatrixTranspose(XMMatrixInverse(nullptr, XMLoadFloat4x4(&m_camera))));
 
-
+	
 	//// Prepare the constant buffer to send it to the graphics device.
 	//context->UpdateSubresource1(m_constantBuffer.Get(), 0, NULL, &m_constantBufferData, 0, 0, 0);
 	//// Each vertex is one instance of the VertexPositionColor struct.
 	UINT stride = sizeof(VertexPositionColor);
-	UINT offset = 0;
+	 const UINT offset = 0;
+	
+	 context->GSSetShader(m_geoShader.Get(), nullptr, 0);
 	//context->IASetVertexBuffers(0, 1, m_vertexBuffer.GetAddressOf(), &stride, &offset);
 	//// Each index is one 16-bit unsigned integer (short).
 	//context->IASetIndexBuffer(m_indexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
@@ -391,6 +393,7 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 	auto loadPSTask = DX::ReadDataAsync(L"SamplePixelShader.cso");
 	auto loadLightPSTask = DX::ReadDataAsync(L"LightPixelShader.cso");
 	auto loadPyramidPSTask = DX::ReadDataAsync(L"PyramidPixelShader.cso");
+	auto loadGSTask = DX::ReadDataAsync(L"GeometryShader.cso");
 
 	// After the vertex shader file is loaded, create the shader and input layout.
 	auto createVSTask = loadVSTask.then([this](const std::vector<byte>& fileData)
@@ -410,6 +413,12 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 	{
 		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateVertexShader(&fileData[0], fileData.size(), nullptr, &instancedvertexShader));
 
+	});
+	auto createGSTask = loadGSTask.then([this](const std::vector<byte>& fileData)
+	{
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateGeometryShader(&fileData[0],fileData.size(),nullptr, &m_geoShader));
+		CD3D11_BUFFER_DESC constantBufferDesc(sizeof(m_geoBuffer), D3D11_BIND_STREAM_OUTPUT);
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&constantBufferDesc, nullptr, &m_geoBuffer));
 	});
 	// After the pixel shader file is loaded, create the shader and constant buffer.
 	auto createPSTask = loadPSTask.then([this](const std::vector<byte>& fileData)
@@ -492,7 +501,7 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&indexBufferDesc, &indexBufferData, &m_indexBuffer));
 	});
 
-	auto createGroundTask = (createlightPSTask && createVSTask ).then([this]()
+	auto createGroundTask = (createlightPSTask && createVSTask).then([this]()
 	{
 		Mesh sphere = Mesh("Assets/floor_bottom.obj");
 

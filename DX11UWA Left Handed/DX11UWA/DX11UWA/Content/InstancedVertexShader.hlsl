@@ -11,30 +11,34 @@ struct VertexShaderInput
 {
 	float3 pos : POSITION;
 	float3 uv : UV;
+	float3 normal : NORMAL;
 };
 
-// Per-pixel color data passed through the pixel shader.
-struct PixelShaderInput
+struct GSOutput
 {
 	float4 pos : SV_POSITION;
 	float3 uv : UV;
+	float3 normal : NORMAL;
+	float3 world_pos : WORLDPOS;
 };
 
 // Simple shader to do vertex processing on the GPU.
 //SV_InstancedID
-PixelShaderInput main(VertexShaderInput input, uint id : SV_InstanceID)
+GSOutput main(VertexShaderInput input, uint id : SV_InstanceID)
 {
-	PixelShaderInput output;
+	GSOutput output;
 	float4 pos = float4(input.pos, 1.0f);
+	float4 normals = float4(input.normal, 0.0f);
 
 	// Transform the vertex position into projected space.
 	pos = mul(pos, model[id]);
+	output.world_pos = pos.xyz;
 	pos = mul(pos, view);
 	pos = mul(pos, projection);
 	output.pos = pos;
 
 	// Pass the color through without modification.
 	output.uv = input.uv;
-
+	output.normal = mul(normals, model[id]);
 	return output;
 }

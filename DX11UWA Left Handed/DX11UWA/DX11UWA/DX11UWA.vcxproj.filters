@@ -104,15 +104,15 @@
     <Image Include="Assets\StoreLogo.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\Castle1.dds">
-      <Filter>Assets</Filter>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DX11UWA_TemporaryKey.pfx" />
+    <None Include="Assets\Castle1.dds" />
+    <None Include="Assets\floor_bottom.obj" />
+    <None Include="Assets\pyramid.obj" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Content\SamplePixelShader.hlsl">
@@ -130,13 +130,8 @@
     <FxCompile Include="Content\InstancedVertexShader.hlsl">
       <Filter>Content\Shaders</Filter>
     </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="Assets\floor_bottom.obj">
-      <Filter>Assets</Filter>
-    </Object>
-    <Object Include="Assets\pyramid.obj">
-      <Filter>Assets</Filter>
-    </Object>
+    <FxCompile Include="GeometryShader.hlsl">
+      <Filter>Content\Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

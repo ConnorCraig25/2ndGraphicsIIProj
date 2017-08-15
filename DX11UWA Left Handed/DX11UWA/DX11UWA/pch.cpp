@@ -30,8 +30,8 @@ Mesh::Mesh(const char* filename)
 				fscanf_s(file, "%f %f\n", &uvtmp.x, &uvtmp.y);
 				if (uvtmp.x > 1.0)
 				{
-					uvtmp.x /= 662.0f;
-						uvtmp.y /= 351.0f;
+					uvtmp.x /=    520.0f;
+						uvtmp.y /= 520.0f;
 				}
 				uvs.push_back(uvtmp);
 			}

@@ -40,8 +40,10 @@ namespace DX11UWA
 		Microsoft::WRL::ComPtr<ID3D11InputLayout>	m_inputLayout;
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_vertexBuffer;
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_indexBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>        m_geoBuffer;
 		Microsoft::WRL::ComPtr<ID3D11VertexShader>	m_vertexShader;
 		Microsoft::WRL::ComPtr<ID3D11VertexShader>	instancedvertexShader;
+		Microsoft::WRL::ComPtr<ID3D11GeometryShader> m_geoShader;
 		Microsoft::WRL::ComPtr<ID3D11PixelShader>   m_light_pixelShader;
 		Microsoft::WRL::ComPtr<ID3D11PixelShader>	m_pyramid_pixelShader;
 		Microsoft::WRL::ComPtr<ID3D11PixelShader>	m_pixelShader;

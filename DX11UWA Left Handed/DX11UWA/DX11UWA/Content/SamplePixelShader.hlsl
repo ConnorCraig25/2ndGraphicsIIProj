@@ -1,3 +1,4 @@
+SamplerState filters[2] : register(s0);
 // Per-pixel color data passed through the pixel shader.
 struct PixelShaderInput
 {
@@ -10,7 +11,7 @@ struct PixelShaderInput
 texture2D baseTexture : register(t0); // first texture
  // second texture
 
-SamplerState filters[2] : register(s0);
+
 
 // A pass-through function for the (interpolated) color data.
 float4 main(PixelShaderInput input) : SV_TARGET
