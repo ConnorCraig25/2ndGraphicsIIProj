@@ -5,7 +5,7 @@ struct PixelShaderInput
 {
 	float4 pos : SV_POSITION;
 	float3 uv : UV;
-	float4 normal : NORMAL;
+	float3 normal : NORMAL;
 	float3 world_pos : WORLDPOS;
 };
 

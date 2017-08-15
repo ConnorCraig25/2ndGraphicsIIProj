@@ -6,15 +6,15 @@ mtllib pyramid.mtl
 
 
 #
-#  Mesh
+#  Mesh Mesh
 #
-g  Mesh
+g  Mesh Mesh
 
 
 #
-#  Mesh__lambert2
+#  Mesh Mesh_ Mesh__lambert2
 #
-usemtl  Mesh__lambert2
+usemtl  Mesh Mesh_ Mesh__lambert2
 
 v -0.466297 -0.329721 -0.466297
 v 0.466297 -0.329721 -0.466297

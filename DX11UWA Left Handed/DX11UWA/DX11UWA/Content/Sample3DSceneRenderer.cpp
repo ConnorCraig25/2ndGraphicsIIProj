@@ -73,7 +73,7 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 		double totalRotation = timer.GetTotalSeconds() * radiansPerSecond;
 		float radians = static_cast<float>(fmod(totalRotation, XM_2PI));
 
-		Rotate(radians);
+		Rotate(0);
 	}
 
 
@@ -332,10 +332,26 @@ void Sample3DSceneRenderer::Render(void)
 	//// Prepare the constant buffer to send it to the graphics device.
 	//context->UpdateSubresource1(m_constantBuffer.Get(), 0, NULL, &m_constantBufferData, 0, 0, 0);
 	//// Each vertex is one instance of the VertexPositionColor struct.
-	UINT stride = sizeof(VertexPositionColor);
+	UINT stride = sizeof(VertexPositionUVNormal);
 	 const UINT offset = 0;
+
+
 	
-	 context->GSSetShader(m_geoShader.Get(), nullptr, 0);
+	 	context->UpdateSubresource1(m_constPyramidBuffer.Get(), 0, NULL, &m_constBufferPyramidData, 0, 0, 0);
+		context->IASetVertexBuffers(0, 1, m_VertPyramidBuffer.GetAddressOf(), &stride, &offset);
+		context->IASetIndexBuffer(m_IndexPyramidBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
+		context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+		context->IASetInputLayout(m_inputLayout.Get());
+		context->VSSetShader(instancedvertexShader.Get(), nullptr, 0);
+		context->VSSetConstantBuffers1(0, 1, m_constPyramidBuffer.GetAddressOf(), nullptr, nullptr);
+		context->PSSetShader(m_pyramid_pixelShader.Get(), nullptr, 0);
+		context->GSSetShader(m_geoShader.Get(), nullptr, 0);
+		// Draw the objects.
+		context->DrawIndexedInstanced(m_indexPyramidCount, 3, 0, 0, 0);
+
+
+
+
 	//context->IASetVertexBuffers(0, 1, m_vertexBuffer.GetAddressOf(), &stride, &offset);
 	//// Each index is one 16-bit unsigned integer (short).
 	//context->IASetIndexBuffer(m_indexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
@@ -349,7 +365,7 @@ void Sample3DSceneRenderer::Render(void)
 	//context->PSSetShader(m_pixelShader.Get(), nullptr, 0);
 	//// Draw the objects.
 	//context->DrawIndexed(m_indexCount, 0, 0);
-
+	
 	context->PSSetConstantBuffers(0, 1, lightbuffer.GetAddressOf());
 	stride = sizeof(VertexPositionUVNormal);
 	// Prepare the constant buffer to send it to the graphics device.
@@ -365,22 +381,14 @@ void Sample3DSceneRenderer::Render(void)
 	// Send the constant buffer to the graphics device.
 	context->VSSetConstantBuffers1(0, 1, m_constantBuffer.GetAddressOf(), nullptr, nullptr);
 	// Attach our pixel shader.
+context->GSSetShader(nullptr, nullptr, 0);
 	context->PSSetShader(m_light_pixelShader.Get(), nullptr, 0);
 	context->PSSetShaderResources(0, 1, m_floor_bottomTex.GetAddressOf());
 	// Draw the objects.
 	context->DrawIndexed(m_indexfloor_bottomCount, 0, 0);
 
 
-		context->UpdateSubresource1(m_constPyramidBuffer.Get(), 0, NULL, &m_constBufferPyramidData, 0, 0, 0);
-		context->IASetVertexBuffers(0, 1, m_VertPyramidBuffer.GetAddressOf(), &stride, &offset);
-		context->IASetIndexBuffer(m_IndexPyramidBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
-		context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		context->IASetInputLayout(m_inputLayout.Get());
-		context->VSSetShader(instancedvertexShader.Get(), nullptr, 0);
-		context->VSSetConstantBuffers1(0, 1, m_constPyramidBuffer.GetAddressOf(), nullptr, nullptr);
-		context->PSSetShader(m_pyramid_pixelShader.Get(), nullptr, 0);
-		// Draw the objects.
-		context->DrawIndexedInstanced(m_indexPyramidCount, 3, 0, 0, 0);
+	
 
 
 }
