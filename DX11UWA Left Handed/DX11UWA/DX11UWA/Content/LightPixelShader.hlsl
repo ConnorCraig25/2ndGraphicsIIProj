@@ -16,11 +16,11 @@ struct Light
 									
 };       
 
-struct PixelShaderInput
+struct DS_OUTPUT
 {
 	float4 pos : SV_POSITION;
 	float3 uv : UV;
-    float3 normal : NORMAL;
+    float4 normal : NORMAL;
 	float3 world_pos : WORLDPOS;
 };
 
@@ -31,13 +31,13 @@ cbuffer LightProperties : register(b0)
 	Light Lights[3];           
 };                       
 
-float Attenuation(Light light, PixelShaderInput input)
+float Attenuation(Light light, DS_OUTPUT input)
 {
 	
 	return 1.0f - saturate(length(light.Position.xyz - input.world_pos.xyz) / light.radius.x);
 }
 
-float SpotlightAttenuation(Light light, PixelShaderInput input)
+float SpotlightAttenuation(Light light, DS_OUTPUT input)
 {
 	float ans;
     float3 lightdir = normalize(light.Position.xyz - input.world_pos.xyz);
@@ -46,7 +46,7 @@ float SpotlightAttenuation(Light light, PixelShaderInput input)
 	return ans;
 }
 
-float4 PointLight(Light light, PixelShaderInput input)
+float4 PointLight(Light light, DS_OUTPUT input)
 {
 	float4 result;
     float3 lightdir = normalize(light.Position.xyz - input.world_pos.xyz);
@@ -57,7 +57,7 @@ float4 PointLight(Light light, PixelShaderInput input)
 	return result;
 }
 
-float4 DirectionalLight(Light light, PixelShaderInput input)
+float4 DirectionalLight(Light light, DS_OUTPUT input)
 {
 	
 	float4 result;
@@ -68,7 +68,7 @@ float4 DirectionalLight(Light light, PixelShaderInput input)
 	return result;
 }
 
-float4 SpotLight(Light light, PixelShaderInput input)
+float4 SpotLight(Light light, DS_OUTPUT input)
 {
 	float4 result;
 	
@@ -84,7 +84,7 @@ float4 SpotLight(Light light, PixelShaderInput input)
 }
 
 // A pass-through function for the (interpolated) color data.
-float4 main(PixelShaderInput input) : SV_TARGET
+float4 main(DS_OUTPUT input) : SV_TARGET
 {
     float4 baseColor = baseTexture.Sample(filters, input.uv);
     if (baseColor.a < 0.5f)

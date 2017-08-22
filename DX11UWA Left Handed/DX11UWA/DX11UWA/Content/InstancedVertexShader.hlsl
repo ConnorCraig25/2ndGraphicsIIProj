@@ -12,6 +12,7 @@ struct VertexShaderInput
 	float3 pos : POSITION;
 	float3 uv : UV;
 	float3 normal : NORMAL;
+	
 };
 
 struct GSOutput
@@ -32,7 +33,7 @@ GSOutput main(VertexShaderInput input, uint id : SV_InstanceID)
 
 	// Transform the vertex position into projected space.
 	pos = mul(pos, model[id]);
-	output.world_pos = pos.xyz;
+	output.world_pos = pos;
 	pos = mul(pos, view);
 	pos = mul(pos, projection);
 	output.pos = pos;

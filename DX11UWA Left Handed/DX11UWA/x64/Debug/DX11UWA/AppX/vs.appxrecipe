@@ -27,17 +27,17 @@
     <AppXManifest Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-08-15T19:39:50.197</Modified>
+      <Modified>2017-08-22T21:41:14.655</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\DX11UWA.exe">
       <PackagePath>DX11UWA.exe</PackagePath>
-      <Modified>2017-08-15T22:54:17.613</Modified>
+      <Modified>2017-08-22T21:41:14.011</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\DX11UWA.winmd">
       <PackagePath>DX11UWA.winmd</PackagePath>
-      <Modified>2017-08-15T19:39:49.619</Modified>
+      <Modified>2017-08-22T20:53:06.918</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -73,6 +73,10 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T21:20:42.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Assets\pokeball.dds">
+      <PackagePath>Assets\pokeball.dds</PackagePath>
+      <Modified>2017-08-22T19:04:54.230</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Assets\Castle1.dds">
       <PackagePath>Assets\Castle1.dds</PackagePath>
       <Modified>2017-08-15T19:57:17.100</Modified>
@@ -85,29 +89,57 @@
       <PackagePath>Assets\pyramid.obj</PackagePath>
       <Modified>2017-08-15T22:42:01.462</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Assets\floor_platform.obj">
+      <PackagePath>Assets\floor_platform.obj</PackagePath>
+      <Modified>2017-08-22T19:24:14.652</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Assets\pokeballblack.obj">
+      <PackagePath>Assets\pokeballblack.obj</PackagePath>
+      <Modified>2017-08-22T21:06:53.797</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Assets\pokeballred.obj">
+      <PackagePath>Assets\pokeballred.obj</PackagePath>
+      <Modified>2017-08-22T20:57:01.893</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Assets\pokeballwhite.obj">
+      <PackagePath>Assets\pokeballwhite.obj</PackagePath>
+      <Modified>2017-08-22T21:03:44.525</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Assets\stadium.obj">
+      <PackagePath>Assets\stadium.obj</PackagePath>
+      <Modified>2017-08-22T21:43:16.524</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\InstancedVertexShader.cso">
       <PackagePath>InstancedVertexShader.cso</PackagePath>
-      <Modified>2017-08-15T21:07:57.316</Modified>
+      <Modified>2017-08-22T20:53:00.626</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\LightPixelShader.cso">
       <PackagePath>LightPixelShader.cso</PackagePath>
-      <Modified>2017-08-15T21:03:17.980</Modified>
+      <Modified>2017-08-22T20:53:00.726</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\PyramidPixelShader.cso">
       <PackagePath>PyramidPixelShader.cso</PackagePath>
-      <Modified>2017-08-15T22:08:24.862</Modified>
+      <Modified>2017-08-22T20:53:00.808</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\SamplePixelShader.cso">
       <PackagePath>SamplePixelShader.cso</PackagePath>
-      <Modified>2017-08-15T21:03:18.174</Modified>
+      <Modified>2017-08-22T20:53:00.903</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\SampleVertexShader.cso">
       <PackagePath>SampleVertexShader.cso</PackagePath>
-      <Modified>2017-08-15T21:09:47.596</Modified>
+      <Modified>2017-08-22T20:53:01.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\DomainShader.cso">
+      <PackagePath>DomainShader.cso</PackagePath>
+      <Modified>2017-08-22T20:53:01.092</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\GeometryShader.cso">
       <PackagePath>GeometryShader.cso</PackagePath>
-      <Modified>2017-08-15T23:03:36.557</Modified>
+      <Modified>2017-08-22T20:53:01.182</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\HullShader.cso">
+      <PackagePath>HullShader.cso</PackagePath>
+      <Modified>2017-08-22T20:53:01.275</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.10586.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -115,7 +147,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2017-08-15T19:39:50.131</Modified>
+      <Modified>2017-08-22T21:41:14.525</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

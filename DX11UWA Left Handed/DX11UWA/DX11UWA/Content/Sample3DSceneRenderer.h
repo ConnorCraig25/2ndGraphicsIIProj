@@ -41,13 +41,18 @@ namespace DX11UWA
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_vertexBuffer;
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_indexBuffer;
 		Microsoft::WRL::ComPtr<ID3D11Buffer>        m_geoBuffer;
-		Microsoft::WRL::ComPtr<ID3D11VertexShader>	m_vertexShader;
-		Microsoft::WRL::ComPtr<ID3D11VertexShader>	instancedvertexShader;
+
+		Microsoft::WRL::ComPtr<ID3D11VertexShader>	 m_vertexShader;
+		Microsoft::WRL::ComPtr<ID3D11VertexShader>	 m_instancedvertexShader;
+		Microsoft::WRL::ComPtr<ID3D11DomainShader>   m_domShader;
+		Microsoft::WRL::ComPtr<ID3D11DomainShader>   m_InstdomShader;
+		Microsoft::WRL::ComPtr<ID3D11HullShader>     m_hulShader;
 		Microsoft::WRL::ComPtr<ID3D11GeometryShader> m_geoShader;
-		Microsoft::WRL::ComPtr<ID3D11PixelShader>   m_light_pixelShader;
-		Microsoft::WRL::ComPtr<ID3D11PixelShader>	m_pyramid_pixelShader;
-		Microsoft::WRL::ComPtr<ID3D11PixelShader>	m_pixelShader;
-		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_constantBuffer;
+		Microsoft::WRL::ComPtr<ID3D11PixelShader>    m_light_pixelShader;
+		Microsoft::WRL::ComPtr<ID3D11PixelShader>	 m_pyramid_pixelShader;
+		Microsoft::WRL::ComPtr<ID3D11PixelShader>	 m_pixelShader;
+													 
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		 m_constantBuffer;
 
 		// System resources for cube geometry.
 		ModelViewProjectionConstantBuffer	m_constantBufferData;
@@ -58,8 +63,38 @@ namespace DX11UWA
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_Indexfloor_bottomBuffer;
 		// System resources for floor_bottom geometry.
 		uint32	m_indexfloor_bottomCount;
-		ModelViewProjectionConstantBuffer	m_constBufferfloor_bottomData;
 		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_floor_bottomTex;
+
+		// Direct3D resources for floor_platform geometry.//
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_Vertfloor_platformBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_Indexfloor_platformBuffer;
+		// System resources for floor_platform geometry.
+		uint32	m_indexfloor_platformCount;
+
+		// Direct3D resources for pokeplat_red geometry.//
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_Vertpokeplat_redBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_Indexpokeplat_redBuffer;
+		// System resources for pokeplat_red geometry.
+		uint32	m_indexpokeplat_redCount;
+		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pokeplatTex;
+
+		// Direct3D resources for pokeplat_black geometry.//
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_Vertpokeplat_blackBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_Indexpokeplat_blackBuffer;
+		// System resources for pokeplat_black geometry.
+		uint32	m_indexpokeplat_blackCount;
+
+		// Direct3D resources for pokeplat_white geometry.//
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_Vertpokeplat_whiteBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_Indexpokeplat_whiteBuffer;
+		// System resources for floor_platform geometry.
+		uint32	m_indexpokeplat_whiteCount;
+
+		// Direct3D resources for stadium geometry.//
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_VertstadiumBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_IndexstadiumBuffer;
+		// System resources for stadium geometry.
+		uint32	m_indexstadiumCount;
 
 		// Direct3D resources for pyramid
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_VertPyramidBuffer;
