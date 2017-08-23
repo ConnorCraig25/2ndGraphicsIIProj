@@ -53,10 +53,20 @@ namespace DX11UWA
 		Microsoft::WRL::ComPtr<ID3D11PixelShader>	 m_pixelShader;
 													 
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		 m_constantBuffer;
-
+		
 		// System resources for cube geometry.
 		ModelViewProjectionConstantBuffer	m_constantBufferData;
 		uint32	m_indexCount;
+
+
+		// Direct3D resources for floor_bottom geometry.//
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_VertSkyboxBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_IndexSkyboxBuffer;
+		// System resources for floor_bottom geometry.
+		uint32	m_indexSkyboxCount;
+		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_SkyboxTex;
+		ModelViewProjectionConstantBuffer m_skyBoxBufferData;
+
 
 		// Direct3D resources for floor_bottom geometry.//
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_Vertfloor_bottomBuffer;
@@ -95,6 +105,11 @@ namespace DX11UWA
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_IndexstadiumBuffer;
 		// System resources for stadium geometry.
 		uint32	m_indexstadiumCount;
+		// Direct3D resources for stadium geometry.//
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_Vertstadium_topBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_Indexstadium_topBuffer;
+		// System resources for stadium geometry.
+		uint32	m_indexstadium_topCount;
 
 		// Direct3D resources for pyramid
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_VertPyramidBuffer;

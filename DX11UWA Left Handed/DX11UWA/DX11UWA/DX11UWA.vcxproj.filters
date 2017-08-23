@@ -107,6 +107,9 @@
     <Image Include="Assets\pokeball.dds">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="Assets\OutputCube.dds">
+      <Filter>Assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -163,6 +166,12 @@
       <Filter>Assets</Filter>
     </Object>
     <Object Include="Assets\stadium.obj">
+      <Filter>Assets</Filter>
+    </Object>
+    <Object Include="Assets\sphere.obj">
+      <Filter>Assets</Filter>
+    </Object>
+    <Object Include="Assets\SkyboxCube.obj">
       <Filter>Assets</Filter>
     </Object>
   </ItemGroup>

@@ -82,6 +82,10 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 
 	XMStoreFloat4(&m_LightProperties.EyePosition, XMVectorSet(m_camera._41, m_camera._42, m_camera._43, 1.0f));
 
+	m_skyBoxBufferData.view = m_constantBufferData.view;
+	m_skyBoxBufferData.projection = m_constantBufferData.projection;
+	XMStoreFloat4x4(&m_skyBoxBufferData.model, XMMatrixTranspose(XMMatrixTranslation(m_camera._41, m_camera._42, m_camera._43)));
+
 	for (int i = 0; i < numLights; ++i)
 	{
 		Light light;
@@ -342,8 +346,27 @@ void Sample3DSceneRenderer::Render(void)
 	UINT stride = sizeof(VertexPositionUVNormal);
 	 const UINT offset = 0;
 
-
-	
+//context->UpdateSubresource1(m_constantBuffer.Get(), 0, NULL, &m_skyBoxBufferData, 0, 0, 0);
+//	context->IASetVertexBuffers(0, 1, m_VertSkyboxBuffer.GetAddressOf(), &stride, &offset);
+//	context->IASetIndexBuffer(m_IndexSkyboxBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
+//	context->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST);
+//	context->IASetInputLayout(m_inputLayout.Get());
+//	// Attach our vertex shader.
+//	context->VSSetShader(m_vertexShader.Get(), nullptr, 0);
+//	context->VSSetConstantBuffers1(0, 1, m_constantBuffer.GetAddressOf(), nullptr, nullptr);
+//	context->HSSetShader(m_hulShader.Get(), nullptr, 0);
+//	context->DSSetShader(m_domShader.Get(), nullptr, 0);
+//	context->DSSetConstantBuffers1(0, 1, m_constantBuffer.GetAddressOf(), nullptr, nullptr);
+//	context->GSSetShader(m_geoShader.Get(), nullptr, 0);
+//	// Send the constant buffer to the graphics device.
+//
+//	// Attach our pixel shader.
+//	context->PSSetShader(m_pyramid_pixelShader.Get(), nullptr, 0);
+//	context->PSSetShaderResources(0, 1, m_SkyboxTex.GetAddressOf());
+//	// Draw the objects.
+//	context->DrawIndexed(m_indexSkyboxCount, 0, 0);
+//	context->ClearDepthStencilView(m_deviceResources->GetDepthStencilView(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+//	
 	 	context->UpdateSubresource1(m_constPyramidBuffer.Get(), 0, NULL, &m_constBufferPyramidData, 0, 0, 0);
 		context->IASetVertexBuffers(0, 1, m_VertPyramidBuffer.GetAddressOf(), &stride, &offset);
 		context->IASetIndexBuffer(m_IndexPyramidBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
@@ -353,7 +376,7 @@ void Sample3DSceneRenderer::Render(void)
 		context->VSSetConstantBuffers1(0, 1, m_constPyramidBuffer.GetAddressOf(), nullptr, nullptr);
 		context->DSSetShader(nullptr, nullptr, 0);
 		context->HSSetShader(nullptr, nullptr, 0);
-		context->GSSetShader(m_geoShader.Get(), nullptr, 0);
+		context->GSSetShader(nullptr, nullptr, 0);
 		context->PSSetShader(m_pyramid_pixelShader.Get(), nullptr, 0);
 		
 		// Draw the objects.
@@ -378,6 +401,7 @@ void Sample3DSceneRenderer::Render(void)
 	context->VSSetShader(m_vertexShader.Get(), nullptr, 0);
 	context->VSSetConstantBuffers1(0, 1, m_constantBuffer.GetAddressOf(), nullptr, nullptr);
 	context->HSSetShader(m_hulShader.Get(), nullptr, 0);
+	
 	context->DSSetShader(m_domShader.Get(), nullptr, 0);
 	context->DSSetConstantBuffers1(0, 1, m_constantBuffer.GetAddressOf(), nullptr, nullptr);
 	context->GSSetShader(nullptr, nullptr, 0);
@@ -503,11 +527,51 @@ void Sample3DSceneRenderer::Render(void)
 	// Draw the objects.
 	context->DrawIndexed(m_indexstadiumCount, 0, 0);
 
+	context->PSSetConstantBuffers(0, 1, lightbuffer.GetAddressOf());
+	context->IASetVertexBuffers(0, 1, m_Vertstadium_topBuffer.GetAddressOf(), &stride, &offset);
+	context->IASetIndexBuffer(m_Indexstadium_topBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
+	context->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST);
+	context->IASetInputLayout(m_inputLayout.Get());
+	// Attach our vertex shader.
+	context->VSSetShader(m_vertexShader.Get(), nullptr, 0);
+	context->VSSetConstantBuffers1(0, 1, m_constantBuffer.GetAddressOf(), nullptr, nullptr);
+	context->HSSetShader(m_hulShader.Get(), nullptr, 0);
+	context->DSSetShader(m_domShader.Get(), nullptr, 0);
+	context->DSSetConstantBuffers1(0, 1, m_constantBuffer.GetAddressOf(), nullptr, nullptr);
+	context->GSSetShader(m_geoShader.Get(), nullptr, 0);
+	// Send the constant buffer to the graphics device.
+
+	// Attach our pixel shader.
+	context->PSSetShader(m_pyramid_pixelShader.Get(), nullptr, 0);
+	context->PSSetShaderResources(0, 1, m_pokeplatTex.GetAddressOf());
+	// Draw the objects.
+	context->DrawIndexed(m_indexstadium_topCount, 0, 0);
+
+
+	
 
 }
 
 void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 {
+
+	CD3D11_SAMPLER_DESC sampDesc;
+	ZeroMemory(&sampDesc, sizeof(CD3D11_SAMPLER_DESC));
+
+	sampDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+	sampDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
+	sampDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+	sampDesc.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
+	sampDesc.MipLODBias = 0.0f;
+	sampDesc.MaxAnisotropy = 1;
+	sampDesc.ComparisonFunc = D3D11_COMPARISON_NEVER;
+	sampDesc.BorderColor[0] = 1.0f;
+	sampDesc.BorderColor[1] = 1.0f;
+	sampDesc.BorderColor[2] = 1.0f;
+	sampDesc.BorderColor[3] = 1.0f;
+	sampDesc.MinLOD = -FLT_MAX;
+	sampDesc.MaxLOD = FLT_MAX;
+
 	// Load shaders asynchronously.
 	auto loadVSTask = DX::ReadDataAsync(L"SampleVertexShader.cso");
 	auto loadInstanceVStask = DX::ReadDataAsync(L"InstancedVertexShader.cso");
@@ -709,6 +773,50 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 		indexBufferData.SysMemSlicePitch = 0;
 		CD3D11_BUFFER_DESC indexBufferDesc(sizeof(unsigned int)*sphere.indexbuffer.size(), D3D11_BIND_INDEX_BUFFER);
 		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&indexBufferDesc, &indexBufferData, &m_IndexstadiumBuffer));
+	});
+
+	auto createstadium_topTask = (createlightPSTask && createVSTask && createHSTask && createDSTask).then([this]()
+	{
+		Mesh sphere = Mesh("Assets/sphere.obj");
+
+		D3D11_SUBRESOURCE_DATA vertexBufferData = { 0 };
+		vertexBufferData.pSysMem = sphere.uniqueVertList.data();
+		vertexBufferData.SysMemPitch = 0;
+		vertexBufferData.SysMemSlicePitch = 0;
+		CD3D11_BUFFER_DESC vertexBufferDesc(sizeof(VertexPositionUVNormal)*sphere.uniqueVertList.size(), D3D11_BIND_VERTEX_BUFFER);
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&vertexBufferDesc, &vertexBufferData, &m_Vertstadium_topBuffer));
+
+		m_indexstadium_topCount = sphere.indexbuffer.size();
+
+		D3D11_SUBRESOURCE_DATA indexBufferData = { 0 };
+		indexBufferData.pSysMem = sphere.indexbuffer.data();
+		indexBufferData.SysMemPitch = 0;
+		indexBufferData.SysMemSlicePitch = 0;
+		CD3D11_BUFFER_DESC indexBufferDesc(sizeof(unsigned int)*sphere.indexbuffer.size(), D3D11_BIND_INDEX_BUFFER);
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&indexBufferDesc, &indexBufferData, &m_Indexstadium_topBuffer));
+	});
+
+	auto createSkyboxTask = (createlightPSTask && createVSTask && createHSTask && createDSTask).then([this]()
+	{
+		Mesh sphere = Mesh("Assets/SkyboxCube.obj");
+
+		D3D11_SUBRESOURCE_DATA vertexBufferData = { 0 };
+		vertexBufferData.pSysMem = sphere.uniqueVertList.data();
+		vertexBufferData.SysMemPitch = 0;
+		vertexBufferData.SysMemSlicePitch = 0;
+		CD3D11_BUFFER_DESC vertexBufferDesc(sizeof(VertexPositionUVNormal)*sphere.uniqueVertList.size(), D3D11_BIND_VERTEX_BUFFER);
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&vertexBufferDesc, &vertexBufferData, &m_VertSkyboxBuffer));
+
+		m_indexSkyboxCount = sphere.indexbuffer.size();
+
+		D3D11_SUBRESOURCE_DATA indexBufferData = { 0 };
+		indexBufferData.pSysMem = sphere.indexbuffer.data();
+		indexBufferData.SysMemPitch = 0;
+		indexBufferData.SysMemSlicePitch = 0;
+		CD3D11_BUFFER_DESC indexBufferDesc(sizeof(unsigned int)*sphere.indexbuffer.size(), D3D11_BIND_INDEX_BUFFER);
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&indexBufferDesc, &indexBufferData, &m_IndexSkyboxBuffer));
+	
+		CreateDDSTextureFromFile(m_deviceResources->GetD3DDevice(), L"Assets/OutputCube.dds", nullptr, &m_SkyboxTex);
 	});
 
 	auto createPyramidsTask = (createInstanceVSTask && createPyramidPSTask && createGSTask).then([this]()

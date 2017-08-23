@@ -82,6 +82,12 @@
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Assets\stadium.obj">
       <PackagePath>Assets\stadium.obj</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Assets\sphere.obj">
+      <PackagePath>Assets\sphere.obj</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\DX11UWA\Assets\SkyboxCube.obj">
+      <PackagePath>Assets\SkyboxCube.obj</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Chamjam\Documents\GitHub\2ndGraphicsIIProj\DX11UWA Left Handed\DX11UWA\x64\Debug\DX11UWA\InstancedVertexShader.cso">
       <PackagePath>InstancedVertexShader.cso</PackagePath>
     </AppxPackagedFile>

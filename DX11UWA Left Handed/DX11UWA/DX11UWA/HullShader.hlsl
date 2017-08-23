@@ -1,3 +1,7 @@
+
+
+
+
 // Input control point
 struct VS_CONTROL_POINT_OUTPUT
 {
@@ -30,11 +34,13 @@ HS_CONSTANT_DATA_OUTPUT CalcHSPatchConstants(InputPatch<VS_CONTROL_POINT_OUTPUT,
 {
 	HS_CONSTANT_DATA_OUTPUT Output;
 
+
+
 	// Insert code to compute Output here
 	Output.EdgeTessFactor[0] = 
 		Output.EdgeTessFactor[1] = 
 		Output.EdgeTessFactor[2] = 
-		Output.InsideTessFactor = 1; // e.g. could calculate dynamic tessellation factors instead
+		Output.InsideTessFactor = 3; // e.g. could calculate dynamic tessellation factors instead
 
 	return Output;
 }
